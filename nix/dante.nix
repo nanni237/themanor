@@ -8,6 +8,7 @@
   networking = {
     hostName = "dante";
     extraHosts = "192.168.0.3 api.kube";
+    hostId = "7352082e";
     interfaces.enp3s0 = {
       ipv4.addresses = [{
        address = "192.168.0.3";
