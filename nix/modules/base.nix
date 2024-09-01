@@ -11,7 +11,7 @@
 
   networking = {
     firewall.enable = true;
-    domain = "dalvarez.uk";
+    domain = "dalvarez.co.uk";
     usePredictableInterfaceNames = true;
   };
 

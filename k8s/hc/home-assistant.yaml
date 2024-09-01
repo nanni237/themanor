@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: home-assistant-storage
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/svc/home-assistant"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: home-assistant-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-assistant
+  labels:
+    app: home-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home-assistant
+  template:
+    metadata:
+      labels:
+        app: home-assistant
+    spec:
+      containers:
+        - name: home-assistant
+          image: ghcr.io/home-assistant/home-assistant:stable
+          ports:
+            - containerPort: 8123
+          volumeMounts:
+            - mountPath: /config
+              name: home-assistant-storage
+          env:
+            - name: TZ
+              value: "Europe/London"  # Change to your timezone
+      volumes:
+        - name: home-assistant-storage
+          persistentVolumeClaim:
+            claimName: home-assistant-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant
+  labels:
+    app: home-assistant
+spec:
+  type: NodePort  # Change from ClusterIP to NodePort
+  ports:
+    - port: 8123
+      targetPort: 8123
+      protocol: TCP
+      nodePort: 30000 # Optional: specify a fixed port, replace 30123 with any port in the range 30000-32767
+  selector:
+    app: home-assistant

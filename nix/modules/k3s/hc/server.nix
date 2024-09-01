@@ -1,15 +1,7 @@
 { config, pkgs, ... }:
 {
-  
-  networking.extraHosts = 
-  ''
-    192.168.0.3 dante.dalvarez.uk
-    192.168.0.3 hc-k8s-api.dalvarez.uk
-  '';
-
   environment.systemPackages = with pkgs; [
     kompose
-    kubectl
     k3s
   ];
 
