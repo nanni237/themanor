@@ -2,7 +2,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment = {
-    systemPackages = with pkgs; [ vim curl btop lsof wget nano fastfetch ];
+    systemPackages = with pkgs; [ git vim curl btop lsof wget nano fastfetch ];
     etc."themanor".source = builtins.fetchGit {
       url = "https://github.com/nanni237/themanor.git";
       ref = "refs/heads/main";

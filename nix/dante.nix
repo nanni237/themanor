@@ -2,7 +2,7 @@
   imports = [
     ./hardware/idk.nix
     ./modules/base.nix
-    ./modules/k8s/hc/master-node.nix
+    ./modules/k3s/hc/server.nix
   ];
 
   networking = {
@@ -18,7 +18,7 @@
     };
     defaultGateway = "192.168.0.1";
     nameservers = [ "1.1.1.1" ];
-    firewall.allowedTCPPorts = [ 80 443 6443 ];
+    firewall.allowedTCPPorts = [ 80 443 8472 ];
   };
 
   system.stateVersion = "24.05";
