@@ -38,5 +38,6 @@
     "--container-runtime-endpoint unix:///run/containerd/containerd.sock"
   ];
 
+  virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "zfs";
 }

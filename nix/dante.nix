@@ -21,5 +21,11 @@
     firewall.allowedTCPPorts = [ 80 443 8472 ];
   };
 
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
+
   system.stateVersion = "24.05";
 }
