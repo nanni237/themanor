@@ -3,6 +3,7 @@
     ./hardware/idk.nix
     ./modules/base.nix
     ./modules/k3s/hc/server.nix
+    ./modules/logibar.nix
   ];
 
   networking = {
@@ -19,12 +20,6 @@
     defaultGateway = "192.168.0.1";
     nameservers = [ "1.1.1.1" ];
     firewall.allowedTCPPorts = [ 80 443 8472 ];
-  };
-
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
   };
 
   system.stateVersion = "24.05";
