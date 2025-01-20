@@ -22,3 +22,8 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  ignoreDifferences:
+    - kind: "*"
+      group: "*"
+      jsonPointers:
+        - /spec/conversion/webhook/clientConfig/caBundle
