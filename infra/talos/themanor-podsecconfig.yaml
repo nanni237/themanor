@@ -1,0 +1,7 @@
+cluster:
+  kubernetes:
+    podSecurity:
+      enabled: true
+      exemptions:
+        namespaces:
+          - metallb-system
