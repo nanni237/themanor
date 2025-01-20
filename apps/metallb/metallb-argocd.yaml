@@ -11,7 +11,7 @@ spec:
       targetRevision: 0.14.8
       helm: {}
     - repoURL: 'https://github.com/nanni237/themanor'
-      targetRevision: prod
+      targetRevision: main
       path: 'apps/metallb'
   destination:
     server: https://kubernetes.default.svc
