@@ -19,6 +19,8 @@ spec:
           image: ghcr.io/home-assistant/home-assistant:2025.3.3
           ports:
             - containerPort: 8123
+          securityContext:
+            privileged: true
           volumeMounts:
             - name: home-assistant-config
               mountPath: /config
